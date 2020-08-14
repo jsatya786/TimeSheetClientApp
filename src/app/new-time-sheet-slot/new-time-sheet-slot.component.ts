@@ -15,16 +15,20 @@ export class NewTimeSheetSlotComponent implements OnInit {
   constructor(private service:TimesheetService,private router:Router) { }
 
   ngOnInit(): void {
+
   //   $(function () {
-  //     alert('jquesry is running.');
-  //     $('#datetimepicker1').datetimepicker();
+      
+  //     $(".form_datetime").datetimepicker({        
+  //       format: "dd MM yyyy - hh:ii"
+  //   });
   // });
     this.buildFormControls();
     this.getPersonsList();
 
   }
   buildFormControls() {
-    this.saveTimeForm=new FormGroup({      
+    this.saveTimeForm=new FormGroup({    
+      Id: new FormControl(0),  
       Pid: new FormControl('',Validators.required),
       Date: new FormControl('',Validators.required),
       HoursWorked:new FormControl('',Validators.required)
@@ -40,11 +44,8 @@ export class NewTimeSheetSlotComponent implements OnInit {
     this.router.navigate(["EmplyeesTimeSheet"]);
   }
   onAdd(){
-    console.log('saveTimeForm :',this.saveTimeForm.value);
-    let formData=JSON.stringify(this.saveTimeForm.value);
-    console.log('json string:',formData);
-    this.service.saveTime(formData).subscribe(data=>{
-console.log('record is added.');
+    this.service.saveTime(this.saveTimeForm.value).subscribe(data=>{
+      //console.log('record is added.');
     });
   }
 
