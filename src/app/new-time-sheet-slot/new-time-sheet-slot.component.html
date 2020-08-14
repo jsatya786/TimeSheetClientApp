@@ -1,0 +1,67 @@
+
+<div class="container-md">
+    <div class="row alignform">
+        <div class="col-md-8 no-padding">
+            <span class="fontstyle">Save Time</span>
+        </div>
+    </div>
+    <div class="row alignform">
+        <div class="col-md-8 formborder">
+            <form name="saveTimeForm" [formGroup]="saveTimeForm">
+
+                <div class="form-group">
+                    <label>Person</label>
+                    <div>
+                        <select id="Pid" formControlName="Pid" class='form-control'
+                        [ngClass]="{'is-invalid':saveTimeForm.get('Pid').touched&&saveTimeForm.get('Pid').invalid}">                           
+                            <option [value]="p.pid" *ngFor="let p of personsList">{{p.personName}}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            <div>Person is Required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <div>
+                         <input type="text"
+                        placeholder="Daterangepicker"
+                        class="form-control" id="Date" formControlName="Date"
+                        bsDatepicker [ngClass]="{'is-invalid':saveTimeForm.get('Date').touched&&saveTimeForm.get('Date').invalid}"> 
+                        <div class="invalid-feedback">
+                            <div>Date is Required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hours Worked</label>
+                    <div>
+
+                        <input id="HoursWorked" formControlName="HoursWorked" type="number" class='form-control'
+                            [ngClass]="{'is-invalid':saveTimeForm.get('HoursWorked').touched&&saveTimeForm.get('HoursWorked').invalid}">
+                        <div class="invalid-feedback">
+                            <div>Hours Worked is Required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" [disabled]="!saveTimeForm.valid" (click)="onAdd()">Add</button>
+                    <button class="btn btn-primary margin-left" (click)="navigaeToList()">Cancel</button>
+                </div>
+            </form>
+            <!-- <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script> -->

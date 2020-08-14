@@ -1,0 +1,22 @@
+.formborder{
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+.alignform
+{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.no-padding
+{
+    padding:0px;
+}
+.fontstyle
+{
+    font-size: 15px;
+    font-weight: bold;
+}
+.margin-left{
+    margin-left:10px;
+}
