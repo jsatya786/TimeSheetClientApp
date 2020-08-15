@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TimesheetService } from 'src/services/timesheet.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-time-sheet-slot',
@@ -11,7 +12,7 @@ import { TimesheetService } from 'src/services/timesheet.service';
 export class NewTimeSheetSlotComponent implements OnInit {
   saveTimeForm: FormGroup;
   personsList:any;
-  constructor(private service:TimesheetService,private router:Router) { }
+  constructor(private service:TimesheetService,private router:Router,private toaster:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -39,8 +40,11 @@ export class NewTimeSheetSlotComponent implements OnInit {
   }
   onAdd(){
     this.service.saveTime(this.saveTimeForm.value).subscribe(data=>{
+      this.toaster.success('Data saved sucessfully.');
       this.router.navigate(['EmplyeesTimeSheet']);
-      error=>{console.log('server error occured.',error);}
+      error=>{
+        this.toaster.error('Server error occured please try after some time.');
+        console.log('server error occured.',error);}
     });
   }
 

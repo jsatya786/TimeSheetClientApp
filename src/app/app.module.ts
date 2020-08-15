@@ -7,7 +7,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { EmployeeTimeSheetComponent } from './employee-time-sheet/employee-time-sheet.component';
 import { NewTimeSheetSlotComponent } from './new-time-sheet-slot/new-time-sheet-slot.component';
 import { TimesheetService} from '../../src/services/timesheet.service';
-
+//toaster
+import { ToastrModule } from 'ngx-toastr';
  // Dattimepicker module
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -27,7 +28,8 @@ import { TimesheetService} from '../../src/services/timesheet.service';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     OwlDateTimeModule, 
-    OwlNativeDateTimeModule,    
+    OwlNativeDateTimeModule,   
+    ToastrModule.forRoot(), 
   ],
   providers: [TimesheetService],
   bootstrap: [AppComponent]
