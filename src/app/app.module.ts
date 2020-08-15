@@ -8,9 +8,10 @@ import { EmployeeTimeSheetComponent } from './employee-time-sheet/employee-time-
 import { NewTimeSheetSlotComponent } from './new-time-sheet-slot/new-time-sheet-slot.component';
 import { TimesheetService} from '../../src/services/timesheet.service';
 
-// Datepicker module
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+ // Dattimepicker module
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,    
   ],
   providers: [TimesheetService],
   bootstrap: [AppComponent]

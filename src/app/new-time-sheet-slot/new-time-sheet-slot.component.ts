@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TimesheetService } from 'src/services/timesheet.service';
-// import * as $ from 'jquery'; 
-// declare var $: any;
+
 @Component({
   selector: 'app-new-time-sheet-slot',
   templateUrl: './new-time-sheet-slot.component.html',
@@ -16,12 +15,6 @@ export class NewTimeSheetSlotComponent implements OnInit {
 
   ngOnInit(): void {
 
-  //   $(function () {
-      
-  //     $(".form_datetime").datetimepicker({        
-  //       format: "dd MM yyyy - hh:ii"
-  //   });
-  // });
     this.buildFormControls();
     this.getPersonsList();
 
@@ -38,6 +31,7 @@ export class NewTimeSheetSlotComponent implements OnInit {
     this.service.getPersonsList().subscribe(res=>{
       console.log("res:",res);
       this.personsList=res;
+      error=>{console.log('server error occured.',error)};
     }); 
   }
   navigaeToList() {
@@ -45,7 +39,8 @@ export class NewTimeSheetSlotComponent implements OnInit {
   }
   onAdd(){
     this.service.saveTime(this.saveTimeForm.value).subscribe(data=>{
-      //console.log('record is added.');
+      this.router.navigate(['EmplyeesTimeSheet']);
+      error=>{console.log('server error occured.',error);}
     });
   }
 

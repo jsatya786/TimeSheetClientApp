@@ -13,7 +13,7 @@
                     <label>Person</label>
                     <div>
                         <select id="Pid" formControlName="Pid" class='form-control'
-                        [ngClass]="{'is-invalid':saveTimeForm.get('Pid').touched&&saveTimeForm.get('Pid').invalid}">                           
+                            [ngClass]="{'is-invalid':saveTimeForm.get('Pid').touched&&saveTimeForm.get('Pid').invalid}">
                             <option [value]="p.pid" *ngFor="let p of personsList">{{p.personName}}</option>
                         </select>
                         <div class="invalid-feedback">
@@ -24,10 +24,20 @@
                 <div class="form-group">
                     <label>Date</label>
                     <div>
-                         <input type="text"
+                        <!-- Datetime picker -->
+                        <div class="form-group">
+                            <input class="form-control no-padding" autocomplete='off' id="Date" formControlName="Date"
+                                [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time"
+                                [ngClass]="{'is-invalid':saveTimeForm.get('Date').touched&&saveTimeForm.get('Date').invalid}">
+                            <owl-date-time #dt1></owl-date-time>
+                        </div>
+
+                        <!--only Date picker 
+                        <input type="text"
                         placeholder="Select Date"
                         class="form-control" id="Date" formControlName="Date"
-                        bsDatepicker [ngClass]="{'is-invalid':saveTimeForm.get('Date').touched&&saveTimeForm.get('Date').invalid}"> 
+                        bsDatepicker [ngClass]="{'is-invalid':saveTimeForm.get('Date').touched&&saveTimeForm.get('Date').invalid}">  -->
+
                         <div class="invalid-feedback">
                             <div>Date is Required.</div>
                         </div>
@@ -49,15 +59,6 @@
                     <button class="btn btn-primary margin-left" (click)="navigaeToList()">Cancel</button>
                 </div>
             </form>
-            <!-- <div class="input-append date form_datetime">
-                <input size="16" type="text" value="" readonly>
-                <span class="add-on"><i class="icon-th"></i></span>
-            </div> -->
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript">
-    $(".form_datetime").datetimepicker({
-        format: "dd MM yyyy - hh:ii"
-    });
-</script>    -->
